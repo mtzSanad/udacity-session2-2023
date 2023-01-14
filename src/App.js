@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Counter from './Counter';
+import CounterInteraction from './CounterInteraction';
+import CounterView from './CounterView';
+import Form from './Form';
+import UseEffectSample from './UseEffectSample';
 
 function App() {
+  const [counter, setCounter] = useState(0);
+  const increment = () => {
+    setCounter((prevCounter) => prevCounter + 1);
+    // setCounter(counter + 1);
+    console.log(counter);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Counter />
+      {/* <hr />
+      <Counter /> */}
+      <hr />
+      <CounterView counter={counter} />
+      <CounterInteraction increment={increment} />
+      {/* <hr />
+      <CounterView counter={counter} />
+      <CounterInteraction increment={increment} /> */}
+      <hr />
+      <Form />
+      <hr />
+      <UseEffectSample />
     </div>
   );
 }
